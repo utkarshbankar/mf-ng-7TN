@@ -38,10 +38,9 @@
 					}
 				},
 				"extract-i18n": {
-					"builder": "ngx-build-plus:extract-i18n",
+					"builder": "@angular-devkit/build-angular:extract-i18n",
 					"options": {
-						"buildTarget": "ng7TNUI:build",
-						"extraWebpackConfig": "webpack.config.js"
+						"buildTarget": "ng7TNUI:build"
 					}
 				},
 				"test": {
@@ -68,6 +67,7 @@
 					"options": {
 						"outputPath": "dist/ng7-tnui",
 						"index": "src/index.html",
+						"browser": "src/main.ts",
 						"polyfills": [
 							"zone.js",
 							"es-module-shims"
@@ -81,10 +81,7 @@
 						"styles": [
 							"src/styles.scss"
 						],
-						"scripts": [],
-						"extraWebpackConfig": "webpack.config.js",
-						"commonChunk": false,
-						"browser": "src/main.ts"
+						"scripts": []
 					},
 					"configurations": {
 						"production": {
@@ -100,8 +97,7 @@
 									"maximumError": "4kb"
 								}
 							],
-							"outputHashing": "all",
-							"extraWebpackConfig": "webpack.prod.config.js"
+							"outputHashing": "all"
 						},
 						"development": {
 							"optimization": false,
@@ -112,22 +108,16 @@
 					"defaultConfiguration": "production"
 				},
 				"serve-original": {
-					"builder": "ngx-build-plus:dev-server",
+					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "ng7TNUI:esbuild:production",
-							"extraWebpackConfig": "webpack.prod.config.js"
+							"buildTarget": "ng7TNUI:esbuild:production"
 						},
 						"development": {
 							"buildTarget": "ng7TNUI:esbuild:development"
 						}
 					},
-					"defaultConfiguration": "development",
-					"options": {
-						"port": 5200,
-						"publicHost": "http://localhost:5200",
-						"extraWebpackConfig": "webpack.config.js"
-					}
+					"defaultConfiguration": "development"
 				}
 			}
 		}
