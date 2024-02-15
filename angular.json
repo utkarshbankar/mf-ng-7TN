@@ -120,6 +120,39 @@
 					"defaultConfiguration": "development"
 				}
 			}
-		}
+    },
+    "sdkone": {
+      "projectType": "library",
+      "root": "projects/sdkone",
+      "sourceRoot": "projects/sdkone/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/sdkone/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/sdkone/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/sdkone/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/sdkone/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    }
 	}
 }
